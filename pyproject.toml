@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pysusie"
+version = "0.1.0"
+description = "Pure-Python port of the R/CRAN package susieR — Sum of Single Effects (SuSiE) regression for Bayesian variable selection and genetic fine-mapping."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Zehua Zeng", email = "starlitnightly@163.com" },
+]
+keywords = [
+    "susie", "susieR", "fine-mapping", "variable-selection",
+    "Bayesian-regression", "credible-sets", "IBSS", "GWAS",
+    "summary-statistics", "LD-matrix", "PIP", "statistical-genetics",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.10",
+    "pandas>=1.5",
+    "matplotlib>=3.6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-cov", "ruff"]
+
+[project.urls]
+Homepage = "https://github.com/omicverse/py-susie"
+Repository = "https://github.com/omicverse/py-susie"
+Issues = "https://github.com/omicverse/py-susie/issues"
+"Upstream R package" = "https://github.com/stephenslab/susieR"
+"Upstream (omicverse)" = "https://github.com/Starlitnightly/omicverse"
+
+[tool.setuptools.packages.find]
+include = ["pysusie*"]
+exclude = ["tests*", "examples*", "susieR-ref*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::FutureWarning",
+    "ignore::RuntimeWarning",
+    "ignore::UserWarning",
+]
